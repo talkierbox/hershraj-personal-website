@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+[![Netlify Status](https://api.netlify.com/api/v1/badges/90bde0a0-591c-4044-b710-224e008dd778/deploy-status)](https://app.netlify.com/projects/hershraj/deploys)
 
-```sh
-npm create astro@latest -- --template minimal
+My personal website/portfolio, built with [Astro](https://astro.build).
+
+## Local development
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then open `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Scripts
 
-Inside of your Astro project, you'll see the following folders and files:
+- **`npm run dev`**: generates SDR copies of photos, then starts the dev server
+- **`npm run build`**: generates SDR copies of photos, then builds to `dist/`
+- **`npm run preview`**: previews the production build
+- **`npm run photos:sdr`**: converts images from `public/photos/` → `public/photos-sdr/` (forces sRGB/SDR to avoid HDR/gain-map issues)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Project layout
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **`src/pages/`**: routes (`index.astro`, `404.astro`)
+- **`src/components/sections/`**: homepage sections
+- **`src/styles/`**: CSS
+- **`public/`**: static assets (images, favicons, JS in `public/scripts/`, and short-link redirects in `public/_redirects`)

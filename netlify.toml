@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 5 supports Node 18.20.8+, 20.3+, and 22+.
+  NODE_VERSION = "20"
+
+# Netlify CLI (optional): `netlify dev`
+[dev]
+  command = "npm run dev"
+  targetPort = 4321
+  port = 8888

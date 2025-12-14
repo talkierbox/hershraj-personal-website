@@ -1,0 +1,77 @@
+---
+import Section from '../Section.astro';
+
+// TODO: Fill these in with your actual details.
+const funFacts: { label: string; value: string }[] = [
+  { label: 'Birthday', value: 'August 5th, 2005' },
+  { label: 'MBTI', value: 'INTJ-T' },
+  { label: 'Favorite Movie', value: 'The Dark Knight'},
+  { label: 'Favorite TV Show', value: 'The Wire'},
+  { label: 'Favorite Anime', value: 'Steins;Gate'},
+  { label: 'Favorite Cuisine', value: 'Thai'},
+  { label: 'Favorite Musical Artist', value: 'Death Grips'},
+  { label: 'Favorite Algorithm', value: 'Dijkstra\'s Algorithm'},
+  { label: 'Favorite Programming Language', value: 'Python'},
+  { label: 'Favorite Course', value: 'EECS 126'},
+  { label: 'Favorite Sport', value: 'Cricket'},
+  { label: 'Place of Birth', value: 'Canton, Ohio'},
+
+];
+---
+
+<Section id="personal" title="Personal">
+  <h2>Personal</h2>
+  <p class="personal-intro">
+    A few non-work things I like — some photos, a couple random facts, and whatever else I feel like adding.
+  </p>
+
+  <figure
+    class="personal-slideshow"
+    data-personal-slideshow
+    tabindex="0"
+    aria-label="Personal photo slideshow"
+  >
+    <div class="personal-slideshow-frame">
+      <div class="personal-slideshow-placeholder">Photos</div>
+      <img
+        class="personal-slideshow-image personal-slideshow-image--a"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+      <img
+        class="personal-slideshow-image personal-slideshow-image--b"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+    </div>
+
+    <figcaption class="personal-slideshow-bar">
+      <button class="personal-slideshow-btn personal-slideshow-prev" type="button" aria-label="Previous photo">
+        <span class="personal-slideshow-chevron" aria-hidden="true">›</span>
+      </button>
+
+      <div class="personal-slideshow-meta">
+        <div class="personal-slideshow-caption" aria-live="polite"></div>
+        <div class="personal-slideshow-counter" aria-hidden="true"></div>
+      </div>
+
+      <button class="personal-slideshow-btn personal-slideshow-next" type="button" aria-label="Next photo">
+        <span class="personal-slideshow-chevron" aria-hidden="true">›</span>
+      </button>
+    </figcaption>
+  </figure>
+
+  <h3>Fun facts</h3>
+  <dl class="facts">
+    {funFacts.map((f) => (
+      <div class="fact">
+        <dt>{f.label}</dt>
+        <dd>{f.value}</dd>
+      </div>
+    ))}
+  </dl>
+</Section>

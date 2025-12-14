@@ -1,0 +1,12 @@
+---
+export interface Props {
+  text: string;
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+
+const { text, as = 'span', class: className } = Astro.props;
+const Tag = as;
+---
+
+<Tag class={['tooltip', className].filter(Boolean).join(' ')} data-tooltip={text}><slot /></Tag>

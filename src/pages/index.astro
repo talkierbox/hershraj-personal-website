@@ -1,16 +1,35 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CourseworkSection from '../components/sections/CourseworkSection.astro';
+import EducationSection from '../components/sections/EducationSection.astro';
+import IndustrySection from '../components/sections/IndustrySection.astro';
+import PersonalSection from '../components/sections/PersonalSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro';
+import ResearchSection from '../components/sections/ResearchSection.astro';
+import TeachingSection from '../components/sections/TeachingSection.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Hershraj Niranjani"
+  description="Hershraj's personal website."
+>
+  <div class="container">
+    <Sidebar />
+
+    <main class="content">
+      <nav class="tabs" aria-label="Site sections"></nav>
+
+      <ProjectsSection />
+      <EducationSection />
+      <ResearchSection />
+      <TeachingSection />
+      <CourseworkSection />
+      <IndustrySection />
+      <PersonalSection />
+    </main>
+  </div>
+
+  <script is:inline src="/scripts/personal-slideshow-registry.js"></script>
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

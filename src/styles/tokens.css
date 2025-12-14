@@ -1,0 +1,11 @@
+/* Design tokens */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --accent: #406abf;
+  --accent-muted: color-mix(in srgb, var(--accent) 70%, #555);
+  --light-gray: #f9f9f9;
+  --border: #eaeaea;
+  --muted: #444444;
+  --sidebar-width: 320px;
+}

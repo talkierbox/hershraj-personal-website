@@ -1,0 +1,62 @@
+---
+import Tooltip from './Tooltip.astro';
+---
+
+<aside class="sidebar">
+  <img src="/self.png" draggable="false" alt="Profile Photo" class="pfp" />
+  <h1>Hershraj Niranjani</h1>
+  <span class="contact">hershraj [at] berkeley.edu</span>
+  <p class="location">San Francisco, CA</p>
+
+  <div class="bio">
+    <p>
+      Hi, I'm Hershraj. I'm a third-year EECS undergrad at UC Berkeley. I'll soon be working alongside a legendary
+      team as a Member of Technical Staff on the intersection of
+      <Tooltip text="AI should enhance human creativity, not replace it.">AI and video</Tooltip>.
+    </p>
+
+    <p>
+      Previously, I worked on graph algorithms and agentic systems at Virio. Prior to that, I interned as a machine
+      learning engineer at Property Finder, where I worked on deep learning models for real estate price forecasting.
+    </p>
+
+    <p>
+      At BAIR, my research focused on LLM-guided program synthesis and interpretable ML, especially on navigating
+      large combinatorial search spaces. I've also worked on time series forecasting and physics-informed models.
+    </p>
+
+    <p>
+      I'm always up for a good conversation — whether it's about information theory, model design, AI agents, or
+      pizza. Feel free to reach out.
+    </p>
+  </div>
+
+  <div class="socials">
+    <a href="https://linkedin.com/in/hershrajn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <img src="/socials/linkedin-logo.png" alt="LinkedIn" />
+    </a>
+    <a href="https://github.com/talkierbox" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <img src="/socials/github-logo.png" alt="GitHub" />
+    </a>
+  </div>
+
+  <!-- Mobile: collapse chevron at bottom of bio -->
+  <button class="bio-collapse" aria-label="Show sections">
+    <svg
+      class="bio-collapse-icon"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <!-- Mobile: tabs shown when bio is collapsed -->
+  <div class="mobile-tabs"></div>
+</aside>

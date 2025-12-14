@@ -1,0 +1,90 @@
+/* Section content */
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section h3 {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.section ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+/* Ensure consistent spacing for list items */
+.section li {
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Custom triangle bullet for top-level items */
+.section > ul > li {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.section > ul > li::before {
+  content: '›';
+  position: absolute;
+  left: -0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+/* School Badge */
+.school-badge {
+  height: 1.5em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.1rem;
+  display: inline-block;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+  transform: translateY(-2px);
+}
+
+/* Nested lists */
+.section ul ul {
+  margin-top: 0.25rem;
+  padding-left: 1rem;
+  list-style: none;
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.section ul ul li {
+  margin-bottom: 0.35rem;
+  padding-left: 0.75rem;
+}
+
+.section ul ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Date/Location metadata styling */
+.meta {
+  display: block;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.note {
+  margin-top: 1.25rem;
+}

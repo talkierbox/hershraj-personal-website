@@ -1,0 +1,355 @@
+/* Mobile Responsive */
+@media (max-width: 850px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
+    box-shadow: none;
+    overflow-x: hidden;
+  }
+
+  /* Full-screen bio overlay */
+  .sidebar {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 2rem 1.5rem;
+    align-items: center;
+    text-align: center;
+    border-right: none;
+    border-bottom: none;
+    position: relative;
+    z-index: 100;
+    background: #fafafa;
+    max-height: none;
+    align-self: auto;
+    justify-content: center;
+    transition: min-height 0.4s ease, padding 0.4s ease;
+    overflow-x: hidden;
+  }
+
+  /* Collapsed state - shrink to header only */
+  .sidebar.collapsed {
+    min-height: auto;
+    padding: 1rem 1.5rem 0rem 1.5rem;
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+  }
+
+  .sidebar .pfp {
+    width: 90px;
+    height: 90px;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  .sidebar.collapsed .pfp {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sidebar h1 {
+    transition: font-size 0.3s ease;
+  }
+
+  .sidebar.collapsed h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Larger text on mobile */
+  .sidebar .contact {
+    font-size: 0.95rem;
+  }
+
+  .sidebar .location {
+    font-size: 0.95rem;
+  }
+
+  /* Transition for socials (hidden when collapsed) */
+  .sidebar .socials {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+  }
+
+  .sidebar.collapsed .socials {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  /* Keep contact and location visible when collapsed */
+  .sidebar.collapsed .contact,
+  .sidebar.collapsed .location {
+    font-size: 0.8rem;
+  }
+
+  .sidebar .socials {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Bio on mobile */
+  .sidebar .bio {
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  }
+
+  .sidebar.collapsed .bio {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  .sidebar .bio p {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Bio collapse button */
+  .bio-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #222; /* darker chevron */
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+
+  /* Hint text (mobile only): shown when bio is expanded */
+  .sidebar:not(.collapsed) .bio-collapse::before {
+    content: 'Tap to continue';
+    position: absolute;
+    right: calc(100% + 0.6rem);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .bio-collapse:hover {
+    opacity: 1;
+  }
+
+  .bio-collapse-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    animation: subtleBounce 2s ease-in-out infinite;
+  }
+
+  .sidebar.collapsed .bio-collapse {
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+  }
+
+  .sidebar.collapsed .bio-collapse-icon {
+    transform: rotate(180deg);
+    animation: none;
+    width: 20px;
+    height: 20px;
+  }
+
+  @keyframes subtleBounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(3px);
+    }
+  }
+
+  /* Mobile tabs - horizontal like desktop, shown when collapsed */
+  .mobile-tabs {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+  }
+
+  .mobile-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fade gradients on both sides to indicate scrollable */
+  .mobile-tabs::before,
+  .mobile-tabs::after {
+    content: '';
+    position: fixed;
+    top: inherit;
+    width: 2.5rem;
+    height: 60px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+
+  .mobile-tabs::before {
+    left: 0;
+    background: linear-gradient(to left, transparent, #fff 70%);
+  }
+
+  .mobile-tabs::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, #fff 70%);
+  }
+
+  .mobile-tabs.active::before,
+  .mobile-tabs.active::after {
+    opacity: 1;
+  }
+
+  .mobile-tabs.active {
+    opacity: 1;
+    max-height: 60px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .mobile-tabs button {
+    padding: 1rem 0.85rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s;
+    font-family: inherit;
+    white-space: nowrap;
+    flex: none;
+  }
+
+  .mobile-tabs button:first-child {
+    margin-left: 2.5rem;
+  }
+
+  .mobile-tabs button:last-child {
+    margin-right: 2.5rem;
+  }
+
+  .mobile-tabs button:hover {
+    color: var(--fg);
+  }
+
+  .mobile-tabs button.active {
+    color: var(--accent);
+  }
+
+  .mobile-tabs button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .content {
+    width: 100%;
+    background: #fff;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.4s ease;
+  }
+
+  .content.visible {
+    opacity: 1;
+    max-height: 5000px;
+    overflow: visible;
+  }
+
+  .content.visible .section.active {
+    padding-top: 1.5rem;
+  }
+
+  /* Hide desktop tabs on mobile */
+  .tabs {
+    display: none;
+  }
+
+  .section {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Mobile tooltips - prevent overflow, show as toast at bottom */
+  .tooltip::after,
+  a.citation::after {
+    transition: none;
+  }
+
+  .tooltip:hover::after,
+  a.citation:hover::after {
+    position: fixed;
+    bottom: 1.5rem;
+    top: auto;
+    left: 1rem;
+    right: 1rem;
+    white-space: normal;
+    max-width: none;
+    width: auto;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 14px 18px;
+    margin-bottom: 0;
+    transform: none;
+    animation: tooltipBounceIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes tooltipBounceIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Hide arrow on mobile */
+  .tooltip:hover::before,
+  a.citation:hover::before {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+---
+import Section from '../Section.astro';
+import Citation from '../Citation.astro';
+---
+
+<Section id="projects" title="Projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>
+      <strong>FlowZero</strong>: RL-powered Flow Free solver built on Monte-Carlo Graph Search with expert iteration.
+      <ul>
+        <li>Also includes a stochastic puzzle generator and a SAT-based oracle for stress-testing &amp; benchmarking.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>DreamPy</strong>: Python rewrite of the Dreamcoder<Citation
+        href="https://arxiv.org/abs/2006.08381"
+        tooltip="ArXiv: DreamCoder"
+        ariaLabel="DreamCoder paper"
+      />
+      framework.
+    </li>
+
+    <li>
+      <strong>ThrowdownTV</strong>: Low-latency RTMP live video streaming platform (React, Express, Rust, Typescript).
+    </li>
+
+    <li><strong>Formify</strong>: Computer vision tool to convert photos of tables into accurate CSV files.</li>
+  </ul>
+</Section>
