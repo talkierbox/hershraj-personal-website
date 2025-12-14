@@ -56,7 +56,8 @@
 
 .sidebar h1 {
   font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
 }
 
 .sidebar .role {
