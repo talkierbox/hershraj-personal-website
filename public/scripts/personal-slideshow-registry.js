@@ -30,7 +30,7 @@ window.PERSONAL_SLIDESHOW = [
   },
   {
     src: '/photos/beard.jpg',
-    caption: 'My beard after a month of not shaving. Note that I was only 18 in this photo.',
+    caption: 'My beard after a month of not shaving. Note that I was only 18 in this photo',
     alt: 'Beard',
     fit: 'contain',
   },
