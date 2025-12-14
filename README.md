@@ -1,6 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/90bde0a0-591c-4044-b710-224e008dd778/deploy-status)](https://app.netlify.com/projects/hershraj/deploys)
 
-My personal website/portfolio, built with [Astro](https://astro.build).
+My personal website/portfolio, built with [Astro](https://astro.build/). 
+
+[View it live!](https://hershrajn.com/)
 
 ## Local development
 
