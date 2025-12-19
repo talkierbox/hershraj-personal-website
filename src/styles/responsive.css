@@ -137,7 +137,7 @@
 
   /* Hint text (mobile only): shown when bio is expanded */
   .sidebar:not(.collapsed) .bio-collapse::before {
-    content: 'Tap to continue';
+    content: 'Continue';
     position: absolute;
     right: calc(100% + 0.6rem);
     top: 50%;
@@ -148,6 +148,7 @@
     color: var(--muted);
     opacity: 0.9;
     pointer-events: none;
+    animation: textBounce 2s ease-in-out infinite;
   }
 
   .bio-collapse:hover {
@@ -181,6 +182,16 @@
     }
     50% {
       transform: translateY(3px);
+    }
+  }
+
+  @keyframes textBounce {
+    0%,
+    100% {
+      transform: translateY(-50%) translateY(0);
+    }
+    50% {
+      transform: translateY(-50%) translateY(2px);
     }
   }
 
