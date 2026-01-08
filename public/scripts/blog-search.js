@@ -15,7 +15,7 @@
   const sortSelect = document.querySelector('.blog-sort');
   const filterTags = document.querySelectorAll('.blog-filter-tag');
   const noResults = document.querySelector('.blog-no-results');
-  const posts = [...container.querySelectorAll('.blog-post')];
+  const posts = [...container.querySelectorAll('.blog-post-card')];
 
   if (posts.length === 0) return;
 
@@ -201,8 +201,8 @@
     e.preventDefault();
     e.stopPropagation();
 
-    const postId = copyBtn.dataset.copyLink;
-    const url = `${window.location.origin}${window.location.pathname}#post-${postId}`;
+    const postPath = copyBtn.dataset.copyLink;
+    const url = `${window.location.origin}${postPath}`;
 
     navigator.clipboard.writeText(url).then(() => {
       // Show feedback
@@ -213,8 +213,8 @@
         copyBtn.classList.remove('copied');
       }, 2000);
     }).catch(() => {
-      // Fallback: just update the URL hash
-      window.location.hash = `post-${postId}`;
+      // Fallback: navigate to the post
+      window.location.href = postPath;
     });
   });
 })();

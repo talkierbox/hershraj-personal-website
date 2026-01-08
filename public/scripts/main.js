@@ -29,9 +29,31 @@
 
     if (!firstActiveId) {
       firstActiveId = id;
-      btn.classList.add('active');
-      sec.classList.add('active');
     }
+  });
+
+  // Check URL hash to determine which tab to activate
+  const getTabFromHash = () => {
+    const hash = window.location.hash.slice(1); // Remove the #
+    if (!hash) return firstActiveId;
+    
+    // Direct section match (e.g., #blog)
+    if (sections[hash]) return hash;
+    
+    // Check for post-id format (e.g., #post-1000) - activate blog tab
+    if (hash.startsWith('post-')) return 'blog';
+    
+    return firstActiveId;
+  };
+
+  const initialTab = getTabFromHash();
+  
+  // Set initial active states
+  [...tabBar.children].forEach((btn) => {
+    if (btn.dataset.tab === initialTab) btn.classList.add('active');
+  });
+  Object.values(sections).forEach((sec) => {
+    if (sec.id === initialTab) sec.classList.add('active');
   });
 
   const setActive = (id) => {
@@ -49,6 +71,12 @@
     const target = e.target;
     if (!(target instanceof HTMLButtonElement)) return;
     setActive(target.dataset.tab);
+  });
+
+  // Handle hash changes (e.g., back/forward navigation)
+  window.addEventListener('hashchange', () => {
+    const tab = getTabFromHash();
+    if (tab) setActive(tab);
   });
 
   // Auto-number citations in order of appearance.
@@ -87,9 +115,16 @@
       btn.type = 'button';
       btn.textContent = sec.dataset.title || sec.querySelector('h2')?.textContent || id;
       btn.dataset.tab = id;
-      if (id === firstActiveId) btn.classList.add('active');
+      if (id === initialTab) btn.classList.add('active');
       mobileTabs.appendChild(btn);
     });
+
+    // If navigating to page with a hash, auto-collapse sidebar on mobile to show content
+    if (window.location.hash && window.matchMedia('(max-width: 850px)').matches) {
+      sidebar.classList.add('collapsed');
+      mobileTabs.classList.add('active');
+      if (contentArea) contentArea.classList.add('visible');
+    }
 
     // Handle mobile tab clicks
     mobileTabs.addEventListener('click', (e) => {

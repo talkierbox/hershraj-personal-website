@@ -1,5 +1,5 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Section from '../Section.astro';
 
 type BlogPost = CollectionEntry<'blog'>;
@@ -20,13 +20,8 @@ const sortedForDisplay = [...postsWithIds].sort(
   (a, b) => b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf()
 );
 
-// Render all posts
-const renderedPosts = await Promise.all(
-  sortedForDisplay.map(async ({ post, id }) => {
-    const { Content } = await render(post);
-    return { post, id, Content };
-  })
-);
+// Posts ready for display (no need to render content inline anymore)
+const displayPosts = sortedForDisplay.map(({ post, id }) => ({ post, id }));
 
 // Collect all unique tags
 const allTags = [...new Set(postsByDate.flatMap((p) => p.data.tags || []))].sort();
@@ -44,7 +39,7 @@ function formatDate(date: Date): string {
 <Section id="blog" title="Blog">
   <h2>Blog</h2>
   
-  {renderedPosts.length === 0 ? (
+  {displayPosts.length === 0 ? (
     <p class="no-posts">No posts yet. Check back soon!</p>
   ) : (
     <>
@@ -73,9 +68,9 @@ function formatDate(date: Date): string {
       </div>
 
       <div class="blog-posts" data-blog-container>
-        {renderedPosts.map(({ post, id, Content }) => (
-          <details 
-            class="blog-post"
+        {displayPosts.map(({ post, id }) => (
+          <article 
+            class="blog-post-card"
             id={`post-${id}`}
             data-post-id={id}
             data-title={post.data.title.toLowerCase()}
@@ -83,38 +78,35 @@ function formatDate(date: Date): string {
             data-tags={(post.data.tags || []).join(',').toLowerCase()}
             data-date={post.data.pubDate.valueOf()}
           >
-            <summary class="blog-summary">
+            <a href={`/blog/${post.id}`} class="blog-card-link">
               <span class="blog-title">{post.data.title}</span>
-              <span class="blog-meta">
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {formatDate(post.data.pubDate)}
-                </time>
-                {post.data.tags && post.data.tags.length > 0 && (
-                  <span class="blog-tags">
-                    {post.data.tags.map((tag: string) => (
-                      <button type="button" class="blog-tag" data-tag-click={tag}>{tag}</button>
-                    ))}
-                  </span>
-                )}
-                <button 
-                  type="button" 
-                  class="blog-copy-link" 
-                  data-copy-link={id}
-                  title="Copy link to post"
-                  aria-label="Copy link to post"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                  </svg>
-                </button>
-              </span>
               <span class="blog-description">{post.data.description}</span>
-            </summary>
-            <article class="blog-content">
-              <Content />
-            </article>
-          </details>
+            </a>
+            <div class="blog-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class="blog-tags">
+                  {post.data.tags.map((tag: string) => (
+                    <button type="button" class="blog-tag" data-tag-click={tag}>{tag}</button>
+                  ))}
+                </span>
+              )}
+              <button 
+                type="button" 
+                class="blog-copy-link" 
+                data-copy-link={`/blog/${post.id}`}
+                title="Copy link to post"
+                aria-label="Copy link to post"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+              </button>
+            </div>
+          </article>
         ))}
       </div>
 
