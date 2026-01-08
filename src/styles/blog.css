@@ -275,9 +275,12 @@
 }
 
 .blog-content {
-  padding: 0 1.25rem 1.25rem;
+  padding-top: 0.75rem;
+  padding-right: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
   border-top: 1px solid var(--border);
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   animation: blogFadeIn 0.2s ease;
 }
 
