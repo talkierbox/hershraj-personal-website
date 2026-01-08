@@ -4,21 +4,32 @@ import Section from '../Section.astro';
 
 type BlogPost = CollectionEntry<'blog'>;
 
-// Get all non-draft blog posts, sorted by date (newest first)
-const posts: BlogPost[] = (await getCollection('blog'))
+// Get all non-draft blog posts, sorted by date ascending (oldest first) for stable ID assignment
+const postsByDate: BlogPost[] = (await getCollection('blog'))
   .filter((post: BlogPost) => !post.data.draft)
-  .sort((a: BlogPost, b: BlogPost) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a: BlogPost, b: BlogPost) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+// Assign stable IDs starting at 1000 (oldest post = 1000, newer posts get higher IDs)
+const postsWithIds = postsByDate.map((post, index) => ({
+  post,
+  id: 1000 + index,
+}));
+
+// Re-sort for display (newest first)
+const sortedForDisplay = [...postsWithIds].sort(
+  (a, b) => b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf()
+);
 
 // Render all posts
 const renderedPosts = await Promise.all(
-  posts.map(async (post: BlogPost) => {
+  sortedForDisplay.map(async ({ post, id }) => {
     const { Content } = await render(post);
-    return { post, Content };
+    return { post, id, Content };
   })
 );
 
 // Collect all unique tags
-const allTags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
+const allTags = [...new Set(postsByDate.flatMap((p) => p.data.tags || []))].sort();
 
 // Helper to format dates nicely
 function formatDate(date: Date): string {
@@ -62,9 +73,11 @@ function formatDate(date: Date): string {
       </div>
 
       <div class="blog-posts" data-blog-container>
-        {renderedPosts.map(({ post, Content }) => (
+        {renderedPosts.map(({ post, id, Content }) => (
           <details 
             class="blog-post"
+            id={`post-${id}`}
+            data-post-id={id}
             data-title={post.data.title.toLowerCase()}
             data-description={post.data.description.toLowerCase()}
             data-tags={(post.data.tags || []).join(',').toLowerCase()}
@@ -83,6 +96,18 @@ function formatDate(date: Date): string {
                     ))}
                   </span>
                 )}
+                <button 
+                  type="button" 
+                  class="blog-copy-link" 
+                  data-copy-link={id}
+                  title="Copy link to post"
+                  aria-label="Copy link to post"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                  </svg>
+                </button>
               </span>
               <span class="blog-description">{post.data.description}</span>
             </summary>

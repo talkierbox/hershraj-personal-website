@@ -222,10 +222,10 @@
   .mobile-tabs::before,
   .mobile-tabs::after {
     content: '';
-    position: fixed;
-    top: inherit;
+    position: absolute;
+    top: 0;
     width: 2.5rem;
-    height: 60px;
+    height: 100%;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;

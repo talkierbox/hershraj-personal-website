@@ -184,6 +184,89 @@
   color: var(--accent);
 }
 
+.blog-copy-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 0.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  margin-left: 0.25rem;
+  position: relative;
+}
+
+.blog-copy-link:hover {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.blog-copy-link.copied {
+  color: #22c55e;
+}
+
+.blog-copy-link svg {
+  display: block;
+}
+
+/* Copied tooltip */
+.blog-copied-tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  animation: copiedTooltipIn 0.15s ease forwards;
+  z-index: 100;
+}
+
+.blog-copied-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: #1e1e2e;
+}
+
+.blog-copied-tooltip.fade-out {
+  animation: copiedTooltipOut 0.15s ease forwards;
+}
+
+@keyframes copiedTooltipIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes copiedTooltipOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
 .blog-description {
   color: #555;
   font-size: 0.9rem;
