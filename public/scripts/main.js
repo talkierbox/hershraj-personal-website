@@ -1,6 +1,6 @@
 (() => {
   // Change this list to control section/tab order.
-  const order = ['research', 'industry', 'projects', 'education', 'teaching', 'coursework', 'personal'];
+  const order = ['research', 'blog', 'industry', 'projects', 'education', 'teaching', 'coursework', 'personal'];
 
   const tabBar = document.querySelector('.tabs');
   const content = document.querySelector('.content');

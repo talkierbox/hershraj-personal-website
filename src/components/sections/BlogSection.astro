@@ -1,0 +1,99 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Section from '../Section.astro';
+
+type BlogPost = CollectionEntry<'blog'>;
+
+// Get all non-draft blog posts, sorted by date (newest first)
+const posts: BlogPost[] = (await getCollection('blog'))
+  .filter((post: BlogPost) => !post.data.draft)
+  .sort((a: BlogPost, b: BlogPost) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Render all posts
+const renderedPosts = await Promise.all(
+  posts.map(async (post: BlogPost) => {
+    const { Content } = await render(post);
+    return { post, Content };
+  })
+);
+
+// Collect all unique tags
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort();
+
+// Helper to format dates nicely
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<Section id="blog" title="Blog">
+  <h2>Blog</h2>
+  
+  {renderedPosts.length === 0 ? (
+    <p class="no-posts">No posts yet. Check back soon!</p>
+  ) : (
+    <>
+      <div class="blog-filters">
+        <div class="blog-search-row">
+          <input
+            type="search"
+            class="blog-search"
+            placeholder="Search posts..."
+            aria-label="Search blog posts"
+          />
+          <select class="blog-sort" aria-label="Sort posts">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+        </div>
+        
+        {allTags.length > 0 && (
+          <div class="blog-filter-tags">
+            <button type="button" class="blog-filter-tag active" data-tag="">All</button>
+            {allTags.map((tag) => (
+              <button type="button" class="blog-filter-tag" data-tag={tag}>{tag}</button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="blog-posts" data-blog-container>
+        {renderedPosts.map(({ post, Content }) => (
+          <details 
+            class="blog-post"
+            data-title={post.data.title.toLowerCase()}
+            data-description={post.data.description.toLowerCase()}
+            data-tags={(post.data.tags || []).join(',').toLowerCase()}
+            data-date={post.data.pubDate.valueOf()}
+          >
+            <summary class="blog-summary">
+              <span class="blog-title">{post.data.title}</span>
+              <span class="blog-meta">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {formatDate(post.data.pubDate)}
+                </time>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <span class="blog-tags">
+                    {post.data.tags.map((tag: string) => (
+                      <button type="button" class="blog-tag" data-tag-click={tag}>{tag}</button>
+                    ))}
+                  </span>
+                )}
+              </span>
+              <span class="blog-description">{post.data.description}</span>
+            </summary>
+            <article class="blog-content">
+              <Content />
+            </article>
+          </details>
+        ))}
+      </div>
+
+      <p class="blog-no-results" hidden>Nothing found... try again?</p>
+    </>
+  )}
+</Section>

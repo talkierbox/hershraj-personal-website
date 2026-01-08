@@ -26,3 +26,8 @@ Then open `http://localhost:4321`.
 - **`src/components/sections/`**: homepage sections
 - **`src/styles/`**: CSS
 - **`public/`**: static assets (images, favicons, JS in `public/scripts/`, and short-link redirects in `public/_redirects`)
+- **`src/content/blog/`**: Markdown blog posts
+
+## Blog
+
+Blog posts are written in Markdown and stored in `src/content/blog/`. Each post requires frontmatter with `title`, `description`, `pubDate`, and optional `tags` (array) and `draft` (boolean) fields. Draft posts are hidden from the site. The blog section supports search, sorting, and tag filtering.

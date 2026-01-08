@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import BlogSection from '../components/sections/BlogSection.astro';
 import CourseworkSection from '../components/sections/CourseworkSection.astro';
 import EducationSection from '../components/sections/EducationSection.astro';
 import IndustrySection from '../components/sections/IndustrySection.astro';
@@ -20,6 +21,7 @@ import TeachingSection from '../components/sections/TeachingSection.astro';
     <main class="content">
       <nav class="tabs" aria-label="Site sections"></nav>
 
+      <BlogSection />
       <ProjectsSection />
       <EducationSection />
       <ResearchSection />
@@ -32,4 +34,5 @@ import TeachingSection from '../components/sections/TeachingSection.astro';
 
   <script is:inline src="/scripts/personal-slideshow-registry.js"></script>
   <script is:inline src="/scripts/main.js"></script>
+  <script is:inline src="/scripts/blog-search.js"></script>
 </BaseLayout>
