@@ -5,7 +5,7 @@ pubDate: 01-07-2026
 tags: ["personal"]
 ---
 
-Welcome to my blog! I've been meaning to start writing more about my experiences in tech, research, and life in general. This is a space where I'll share thoughts on:
+Welcome to my blog! I've been meaning to start writing more about my experiences in tech, research, and life in general. 
 
 ## Topics I'll Cover
 
