@@ -171,15 +171,22 @@
 .tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   background: #fff;
   position: sticky;
   top: 0;
   z-index: 10;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tabs button {
-  padding: 1.25rem 1rem;
+  padding: 1.25rem 0.75rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -189,6 +196,8 @@
   position: relative;
   transition: color 0.2s;
   font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tabs button:hover {

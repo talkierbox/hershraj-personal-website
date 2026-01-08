@@ -1,3 +1,15 @@
+/* Intermediate viewport - tabs may need to scroll */
+@media (max-width: 1100px) and (min-width: 851px) {
+  .tabs {
+    padding: 0 1rem;
+  }
+
+  .tabs button {
+    padding: 1.25rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 850px) {
   html,
@@ -212,46 +224,20 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: relative;
+    isolation: isolate;
   }
 
   .mobile-tabs::-webkit-scrollbar {
     display: none;
   }
 
-  /* Fade gradients on both sides to indicate scrollable */
-  .mobile-tabs::before,
-  .mobile-tabs::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 2.5rem;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-  }
-
-  .mobile-tabs::before {
-    left: 0;
-    background: linear-gradient(to left, transparent, #fff 70%);
-  }
-
-  .mobile-tabs::after {
-    right: 0;
-    background: linear-gradient(to right, transparent, #fff 70%);
-  }
-
-  .mobile-tabs.active::before,
-  .mobile-tabs.active::after {
-    opacity: 1;
-  }
+  /* Remove fade gradient pseudo-elements - they cause positioning issues on mobile */
 
   .mobile-tabs.active {
     opacity: 1;
     max-height: 60px;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: clip;
   }
 
   .mobile-tabs button {
@@ -270,11 +256,11 @@
   }
 
   .mobile-tabs button:first-child {
-    margin-left: 2.5rem;
+    margin-left: 1rem;
   }
 
   .mobile-tabs button:last-child {
-    margin-right: 2.5rem;
+    margin-right: 1rem;
   }
 
   .mobile-tabs button:hover {
