@@ -3,6 +3,7 @@ title: "Hello World: First Post"
 description: "An introduction to my new blog section and what to expect."
 pubDate: 01-07-2026
 tags: ["personal"]
+author: "Hershraj Niranjani"
 ---
 
 Welcome to my blog! I've been meaning to start writing more about my experiences in tech, research, and life in general[^1]. 

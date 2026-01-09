@@ -58,6 +58,8 @@ function formatDate(date: Date): string {
           </button>
         </div>
         <div class="blog-meta">
+          <span class="blog-author-name">{post.data.author}</span>
+          <span class="blog-meta-separator">·</span>
           <time datetime={post.data.pubDate.toISOString()}>
             {formatDate(post.data.pubDate)}
           </time>
@@ -81,6 +83,10 @@ function formatDate(date: Date): string {
         <Content />
       </div>
     </article>
+
+    <br>
+    <br>
+    
   </div>
 
   <script>
