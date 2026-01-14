@@ -213,7 +213,9 @@
     justify-content: flex-start;
     overflow-x: auto;
     padding: 0;
-    width: 100%;
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
     border-bottom: 1px solid var(--border);
     background: #fff;
     -webkit-overflow-scrolling: touch;
