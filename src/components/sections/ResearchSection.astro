@@ -5,10 +5,40 @@ import Citation from '../Citation.astro';
 
 <Section id="research" title="Research">
   <h2>Research</h2>
-  <ul>
-    <li>LLM misalignment with Professor Phan Xuan Tan.</li>
-    <li>LLM Routing with Professor Ebrahim Bagheri.</li>
 
+  <h3>Publications</h3>
+  <div class="paper-list">
+    <article class="paper-card">
+      <div class="paper-thumbnail">
+        <img src="/papers/const-ai-opt.png" alt="Constitutional Evolution framework diagram showing iterative optimization loop" />
+      </div>
+      <div class="paper-content">
+        <h4 class="paper-title">
+          <a href="https://arxiv.org/abs/2602.00755" target="_blank" rel="noopener">
+            Evolving Interpretable Constitutions for Multi-Agent Simulation
+          </a>
+        </h4>
+        <p class="paper-authors">
+          Ujwal Kumar, Alice Saito, <strong>Hershraj Niranjani</strong>, Rayan Yessou, Phan Xuan Tan
+        </p>
+        <p class="paper-venue">arXiv preprint, 2026</p>
+        <p class="paper-abstract">
+          We present Constitutional Evolution, a framework for automatically discovering behavioral norms in multi-agent LLM systems. Using LLM-driven genetic programming, we evolve constitutions maximizing social welfare. The evolved constitution achieves 123% higher societal stability than human-designed baselines and discovers that minimizing communication outperforms verbose coordination.
+        </p>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2602.00755" target="_blank" rel="noopener" class="paper-link">
+            <span class="link-icon">📄</span> arXiv
+          </a>
+          <a href="https://arxiv.org/pdf/2602.00755" target="_blank" rel="noopener" class="paper-link">
+            <span class="link-icon">📑</span> PDF
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h3>Research Experience</h3>
+  <ul>
     <li>
       LLM-guided program synthesis at BAIR<Citation
         href="https://bair.berkeley.edu/"
