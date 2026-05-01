@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "astro": "^5.16.5",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "sharp": "^0.34.5"
   }
 }
