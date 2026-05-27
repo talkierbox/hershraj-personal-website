@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-label="Left: agents deliberating around a round table. Right: candidate constitutions ranked on a leaderboard with the top one selected.">
+  <rect x="0" y="0" width="360" height="240" fill="#ffffff" />
+
+  <!-- Section labels -->
+  <text x="90" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#406abf">Deliberate</text>
+  <text x="90" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1.5" fill="#444">INTERNAL</text>
+
+  <text x="270" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#406abf">Evolve</text>
+  <text x="270" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1.5" fill="#444">EXTERNAL</text>
+
+  <!-- Divider -->
+  <line x1="180" y1="58" x2="180" y2="212" stroke="#eaeaea" stroke-width="1" stroke-dasharray="3 4" />
+  <circle cx="180" cy="135" r="13" fill="#ffffff" stroke="#eaeaea" stroke-width="1" />
+  <text x="180" y="139" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-style="italic" fill="#444">vs</text>
+
+  <!-- LEFT: round table with agents + speech bubbles -->
+  <ellipse cx="90" cy="135" rx="48" ry="30" fill="#eef2fa" stroke="#c7d2e8" stroke-width="1.5" />
+  <!-- agents seated around the table -->
+  <g fill="#406abf">
+    <circle cx="90" cy="100" r="9" />
+    <circle cx="138" cy="135" r="9" />
+    <circle cx="90" cy="170" r="9" />
+    <circle cx="42" cy="135" r="9" />
+  </g>
+  <!-- speech bubbles -->
+  <g fill="#ffffff" stroke="#7c8aa5" stroke-width="1">
+    <rect x="78" y="74" width="24" height="13" rx="3" />
+    <rect x="124" y="150" width="24" height="13" rx="3" />
+  </g>
+  <g fill="#9aa7bd">
+    <circle cx="84" cy="80.5" r="1.4" /><circle cx="90" cy="80.5" r="1.4" /><circle cx="96" cy="80.5" r="1.4" />
+    <circle cx="130" cy="156.5" r="1.4" /><circle cx="136" cy="156.5" r="1.4" /><circle cx="142" cy="156.5" r="1.4" />
+  </g>
+  <text x="90" y="206" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" fill="#444">agents debate the rules</text>
+
+  <!-- RIGHT: leaderboard of candidate constitutions -->
+  <!-- ranked bars: longest = best, highlighted -->
+  <g font-family="Helvetica, Arial, sans-serif" font-size="8" fill="#444">
+    <!-- best -->
+    <rect x="222" y="74" width="86" height="15" rx="3" fill="#406abf" />
+    <text x="228" y="85" fill="#ffffff">C3</text>
+    <text x="318" y="85" text-anchor="end" font-size="9" fill="#406abf">&#10003;</text>
+    <!-- 2nd -->
+    <rect x="222" y="96" width="66" height="15" rx="3" fill="#8aa0cc" />
+    <text x="228" y="107" fill="#ffffff">C1</text>
+    <!-- 3rd -->
+    <rect x="222" y="118" width="48" height="15" rx="3" fill="#b6c3de" />
+    <text x="228" y="129" fill="#3a3a3a">C2</text>
+    <!-- 4th -->
+    <rect x="222" y="140" width="30" height="15" rx="3" fill="#cfd8ea" />
+    <text x="228" y="151" fill="#3a3a3a">C4</text>
+  </g>
+  <text x="270" y="206" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" fill="#444">fittest rule is selected</text>
+</svg>
