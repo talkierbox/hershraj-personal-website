@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-label="Two co-evolving fitness trajectories, Blue cooperators and Red free-riders, starting far apart and converging to a near-parity equilibrium band at S approximately 0.78 over 30 generations.">
+  <rect x="0" y="0" width="360" height="240" fill="#ffffff" />
+
+  <!-- Section labels -->
+  <text x="180" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#406abf">Constitutional arms race</text>
+  <text x="180" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1.5" fill="#444">BLUE COOPERATORS &#8594; vs &#8592; RED FREE-RIDERS</text>
+
+  <!-- Plot frame -->
+  <line x1="46" y1="56" x2="46" y2="188" stroke="#d8d8d8" stroke-width="1" />
+  <line x1="46" y1="188" x2="322" y2="188" stroke="#d8d8d8" stroke-width="1" />
+  <text x="40" y="60" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="7" fill="#888">1.0</text>
+  <text x="40" y="191" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="7" fill="#888">0</text>
+
+  <!-- Parity band around S = 0.78 -->
+  <rect x="46" y="86" width="276" height="14" fill="#f1eef7" />
+  <line x1="46" y1="93" x2="322" y2="93" stroke="#8a7cb8" stroke-width="1" stroke-dasharray="3 4" />
+  <text x="326" y="90" font-family="Helvetica, Arial, sans-serif" font-size="7.5" fill="#8a7cb8" font-style="italic">S&#8776;0.78</text>
+
+  <!-- Blue cooperators trajectory: starts high, dips, converges to parity -->
+  <path d="M46 70 C 90 72, 110 128, 150 120 S 220 96, 260 95 S 310 93, 322 93"
+        fill="none" stroke="#406abf" stroke-width="2" stroke-linecap="round" />
+  <!-- Red free-riders trajectory: starts low, rises, converges to parity -->
+  <path d="M46 168 C 96 160, 116 108, 156 112 S 224 98, 262 96 S 312 94, 322 94"
+        fill="none" stroke="#c0453f" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Convergence marker -->
+  <circle cx="322" cy="93.5" r="3" fill="#8a7cb8" />
+
+  <!-- Trajectory legend dots -->
+  <circle cx="52" cy="70" r="3" fill="#406abf" />
+  <circle cx="52" cy="168" r="3" fill="#c0453f" />
+
+  <!-- Axis caption -->
+  <text x="184" y="204" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" fill="#444">30 generations of co-evolution</text>
+  <text x="184" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-style="italic" fill="#444">coupled fitness &#8594; near-parity equilibrium</text>
+</svg>
